@@ -19,6 +19,14 @@ Also show the player what the stats for the computer player are afte
 
 
 #Test case and sample outputs
+#Unit test
+```
+C:\Users\Manigandan D\Desktop\StringMatchGame>go test
+PASS
+ok      _/C_/Users/Manigandan_D/Desktop/StringMatchGame 0.101s
+
+C:\Users\Manigandan D\Desktop\StringMatchGame>
+```
 #Without Prints
 ```
 C:\Users\Manigandan D\Desktop\StringMatchGame>go run main.go
