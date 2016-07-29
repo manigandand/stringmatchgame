@@ -8,10 +8,8 @@ import (
 )
 
 func main() {
-  // fmt.Println("works")
   randomStr := RandomString(6)
-  byterandomStr := []byte(randomStr)
-  // fmt.Println(randomStr)
+  fmt.Println(randomStr)
 
   // get user input
   reader := bufio.NewReader(os.Stdin)
@@ -19,10 +17,18 @@ func main() {
   fmt.Print("Enter text to guss: ")
   text, _ := reader.ReadString('\n')
   // fmt.Println(text)
+  totalCorrect, correctPosition := stringMatch(randomStr, text)
+
+  fmt.Println("You have gussed the correct letter but not in the correct position are: ", totalCorrect)
+  fmt.Println("You have gussed the correct letter in the correct position are: ", correctPosition)  
+}
+
+func stringMatch(randomStr string, text string)(totalCorrect int, correctPosition int){  
+  byterandomStr := []byte(randomStr)
   userInput := []byte(text)
 
-  correctPosition := 0
-  totalCorrect := 0
+  totalCorrect = 0
+  correctPosition = 0  
   /*
     Check for the given string matches exactly in the same position
   */
@@ -50,10 +56,8 @@ func main() {
     u = 0
   }
 
-  fmt.Println("You have gussed the correct letter but not in the correct position are: ", totalCorrect)
-  fmt.Println("You have gussed the correct letter in the correct position are: ", correctPosition)  
+  return totalCorrect, correctPosition
 }
-
 func RandomString(strlen int) string {
   rand.Seed(time.Now().UTC().UnixNano())
   const chars = "abcdefghijklmnopqrstuvwxyz"
