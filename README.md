@@ -20,7 +20,7 @@ Also show the player what the stats for the computer player are afte
 
 #Test case and sample outputs
 #Without Prints
-
+```
 C:\Users\Manigandan D\Desktop\StringMatchGame>go run main.go
 hyespd
 Enter text to guss: heydps
@@ -30,9 +30,10 @@ You have gussed the correct letter but not in the correct position are:  4
 You have gussed the correct letter in the correct position are:  2
 
 C:\Users\Manigandan D\Desktop\StringMatchGame>
+```
 
 #----------------------------------------------
-
+```
 C:\Users\Manigandan D\Desktop\StringMatchGame>go run main.go
 Enter text to guss: maniga
 You have gussed the correct letter but not in the correct position are:  1
@@ -49,12 +50,13 @@ You have gussed the correct letter but not in the correct position are:  0
 You have gussed the correct letter in the correct position are:  1
 
 C:\Users\Manigandan D\Desktop\StringMatchGame>
+```
 
 #----------------------------------------------
 
 
 #With prints
-
+```
 C:\Users\Manigandan D\Desktop\StringMatchGame>go run main.go
 qmoopt
 Enter text to guss: aaaaaa
@@ -102,3 +104,4 @@ You have gussed the correct letter in the correct position are:  0
 You have gussed the correct letter but not in the correct position are:  6
 
 C:\Users\Manigandan D\Desktop\StringMatchGame>
+```
