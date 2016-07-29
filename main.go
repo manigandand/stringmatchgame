@@ -12,9 +12,10 @@ func main() {
   randomStr := RandomString(6)
   byterandomStr := []byte(randomStr)
   // fmt.Println(randomStr)
-  
+
   // get user input
   reader := bufio.NewReader(os.Stdin)
+  fmt.Println("Please enter a string only six chars long!")
   fmt.Print("Enter text to guss: ")
   text, _ := reader.ReadString('\n')
   // fmt.Println(text)
