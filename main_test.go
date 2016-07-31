@@ -74,3 +74,15 @@ func TestMain5(t *testing.T) {
 		t.Error("Expected totalCorrect are in same position 1, but got ",correctPosition)	
 	}
 }
+
+func TestMain6(t *testing.T) {
+	randomStr := "ABBACB"
+	text := "ACBCBA"
+	totalCorrect, correctPosition := stringMatch(randomStr, text)
+	if totalCorrect != 4{
+		t.Error("Expected totalCorrect but not in same position 4, but got ",totalCorrect)	
+	}
+	if correctPosition != 2{
+		t.Error("Expected totalCorrect are in same position 2, but got ",correctPosition)	
+	}
+}
