@@ -43,7 +43,7 @@ func stringMatch(randomStr string, text string)(totalCorrect int, correctPositio
       for j := i+1; j < len(byterandomStr); j++{
         if lastCorrectChar != byterandomStr[i]{
           if byterandomStr[i] == userInput[j] {
-            fmt.Println("r: ",i," ",byterandomStr[i]," u: ",j," ",userInput[j])     
+            // fmt.Println("r: ",i," ",byterandomStr[i]," u: ",j," ",userInput[j])     
             if byterandomStr[j] != userInput[j] {
               totalCorrect++
             }
@@ -51,7 +51,6 @@ func stringMatch(randomStr string, text string)(totalCorrect int, correctPositio
         }
       }
       lastCorrectChar  = byterandomStr[i]
-      fmt.Println("lastCorrectChar: ",i," ",lastCorrectChar)
 
     } else{
       /*
@@ -60,7 +59,7 @@ func stringMatch(randomStr string, text string)(totalCorrect int, correctPositio
       for j := 0; j < len(byterandomStr); j++{
         if lastCorrectChar != byterandomStr[i]{
           if byterandomStr[i] == userInput[j] {
-            fmt.Println("r: ",i," ",byterandomStr[i]," u: ",j," ",userInput[j])  
+            // fmt.Println("r: ",i," ",byterandomStr[i]," u: ",j," ",userInput[j])  
             if byterandomStr[j] != userInput[j] {
               totalCorrect++
             }
@@ -68,36 +67,8 @@ func stringMatch(randomStr string, text string)(totalCorrect int, correctPositio
         }
       }
       lastCorrectChar  = byterandomStr[i]
-      fmt.Println("lastCorrectChar: ",i," ",lastCorrectChar)
     }
   }
-  /*
-    Calculate the strings gused correctly but not in the same position
-  */
-  // r := 0
-  // u := 0
-  // var lastCorrectChar byte
-
-  // for _,rndStr := range byterandomStr {    
-  //   for _,usrStr := range userInput {
-  //     if lastCorrectChar != rndStr{
-  //       if rndStr == usrStr && r != u{
-  //         fmt.Println("r: ",r," u: ",u)
-  //         fmt.Println("r: ",rndStr," u: ",usrStr)        
-  //         // fmt.Println("Pos: ",r," ",string(rndStr)," --> ","Pos: ",u," ",string(usrStr))
-  //         // fmt.Println(string(rndStr), " This pressents")
-  //         // lastCorrectChar  = rndStr
-  //         totalCorrect++
-  //         // break
-  //       }
-  //     }
-  //     u++
-  //   }
-  //   lastCorrectChar  = rndStr
-  //   r++
-  //   u = 0
-  // }
-
   return totalCorrect, correctPosition
 }
 func RandomString(strlen int) string {
