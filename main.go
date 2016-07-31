@@ -5,14 +5,11 @@ import (
 "time"
 "bufio"
 "os"
+// "strconv"
 )
 
 func main() {
-  // computer generated random string
-  randomStr := RandomString(6)
-  
-  reader := bufio.NewReader(os.Stdin)
-  turn := "Player"
+
   Insruction := `==============Welcome to StringMatchGame==============
   It's easy to play, you have chance to conquer our StringMatchGame Robot2.o.
   Like i said, it's easy beacause you can set target (Maximum no of currect guess either in same position or within the letters).
@@ -21,22 +18,33 @@ func main() {
   fmt.Println(Insruction)
   fmt.Println("Please enter a string only six chars long!")
   fmt.Println()
-
+  // computer generated random string
+  randomStr := RandomString(6)  
+  turn := "Player"
+  totalCorrect, correctPosition := 0,0
   fmt.Println("characters need to guess, don't reveal this in future:",randomStr)
-  fmt.Println("Enter the target point(Eg: 1 to 6): ")
-  // targetPoint, _ :=reader.ReadString('\n')
 
-  // if !targetPoint >= 1{
-  //   fmt.Println("target point should be greater than 0 and less than or equal to 6")
+  fmt.Println("Enter the target point(Eg: 1 to 6): ")
+  targetPoint := 0  
+  fmt.Scan(&targetPoint) 
+  if targetPoint < 1 || targetPoint > 6{
+    fmt.Println("target point should be greater than 0 and less than or equal to 6")
+    // os.Exit(1)
+    return
+  }
+  
+  // if totalCorrect > targetPoint || correctPosition > targetPoint{
+
   // }
-  // get user input
-  fmt.Println("Now your turn..!")
-  fmt.Print("Enter text to guess: ")
 
   if turn == "Player" {
+    // get user input
+    fmt.Println("Now your turn..!")
+    fmt.Print("Enter text to guess: ")
+    reader := bufio.NewReader(os.Stdin)
     text, _ := reader.ReadString('\n')
     // fmt.Println(text)
-    totalCorrect, correctPosition := stringMatch(randomStr, text)
+    totalCorrect, correctPosition = stringMatch(randomStr, text)
     fmt.Println("You have guessed the correct letter but not in the correct position are: ", totalCorrect)
     fmt.Println("You have guessed the correct letter in the correct position are: ", correctPosition)
     turn = "Computer"
@@ -44,8 +52,9 @@ func main() {
     // comuter turn
     // let the computer to guess the characters
     fmt.Println("Now your computer turn..!")
-    computerGuss := RandomString(6)
-    totalCorrect, correctPosition := stringMatch(randomStr, computerGuss)
+    computerGuess := RandomString(6)
+    fmt.Println("Computer Guess: ", computerGuess)
+    totalCorrect, correctPosition = stringMatch(randomStr, computerGuess)
     fmt.Println("Computer guessed the correct letter but not in the correct position are: ", totalCorrect)
     fmt.Println("Computer guessed the correct letter in the correct position are: ", correctPosition)
     turn = "Player"
