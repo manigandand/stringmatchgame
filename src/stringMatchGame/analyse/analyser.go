@@ -75,7 +75,8 @@ func GuessSmarter() string {
 			// let the computer to guess the characters
 			fmt.Println("-------------------------------------------------") //
 			fmt.Println("Now computer turn..!")
-			computerGuess := random.RandomString(6)
+			computerGuess := random.ComputerRandomString(6)
+
 			fmt.Println("Computer Guess: ", computerGuess)
 			totalCorrect, correctPosition = engine.StringMatch(randomStr, computerGuess)
 			if totalCorrect >= targetPoint || correctPosition >= targetPoint {
