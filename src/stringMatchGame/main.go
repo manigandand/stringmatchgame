@@ -3,9 +3,12 @@ package main
 import (
 	"fmt"
 	"stringMatchGame/analyse"
+	"stringMatchGame/random"
 )
 
 func main() {
+	// refill the input string to generate random string for computer move
+	random.RefillInputFile()
 
 	Insruction := `==============Welcome to StringMatchGame==============
 	  It's easy to play, you have chance to conquer our StringMatchGame Robot2.o.
