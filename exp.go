@@ -129,32 +129,25 @@
 
 package main
 
-import (
-	"fmt"
-	"stringMatchGame/engine"
-	"stringMatchGame/random"
-)
+import "fmt"
 
-func main() {
-	randomStr := "thlmjf"
-	turn := "Computer"
+func in_array(val string, array []string) (exists bool, index int) {
+	exists = false
+	index = -1
 
-	computerGuess := random.ComputerRandomString(6)
-	fmt.Println("Computer Guess: ", computerGuess)
-	totalCorrect, correctPosition, popout := engine.StringMatch(randomStr, computerGuess, turn)
-	if totalCorrect >= 5 || correctPosition >= 5 {
-		fmt.Println("Computer guessed the correct letter but not in the correct position are: ", totalCorrect)
-		fmt.Println("Computer guessed the correct letter in the correct position are: ", correctPosition)
-		// winer = "Computer"
-		// break
-	} else {
-		fmt.Println()
-		fmt.Println("Computer guessed the correct letter but not in the correct position are: ", totalCorrect)
-		fmt.Println("Computer guessed the correct letter in the correct position are: ", correctPosition)
-		// turn = "Player"
-		// popot all the wrong guessed charcters by computer
-		fmt.Println("popout: ", popout)
-		random.PopoutString(popout)
+	for i, v := range array {
+		if val == v {
+			index = i
+			exists = true
+			return
+		}
 	}
 
+	return
+}
+
+func main() {
+	names := []string{"Mary", "Anna", "Beth", "Johnny", "Beth"}
+
+	fmt.Println(in_array("Jack", names))
 }

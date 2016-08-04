@@ -12,12 +12,36 @@ func ComputerRandomString(strlen int) string {
 	chars := CurentAvailability()
 	// fmt.Println("Remaining Constant to generate Computer Guess: ", chars)
 
+	// "Previous Guess String: "
+	popin := CurrentRightGuess()
+	lengthOfCorrectGuess := 0
+
+	// generate random string
 	rand.Seed(time.Now().UTC().UnixNano())
-	result := make([]byte, strlen)
+	random := make([]byte, strlen)
 	for i := 0; i < strlen; i++ {
-		result[i] = chars[rand.Intn(len(chars))]
+		random[i] = chars[rand.Intn(len(chars))]
 	}
-	return string(result)
+
+	for _, el := range popin {
+		if el != 0 {
+			fmt.Println("PopIn: ", string(el))
+			lengthOfCorrectGuess++
+		}
+	}
+	fmt.Println("lengthOfCorrectGuess: ", lengthOfCorrectGuess)
+	if lengthOfCorrectGuess == 6 {
+		return string(popin)
+	} else {
+
+	}
+
+	fmt.Println("PopIn: ", string(popin))
+
+	fmt.Println("random: ", string(random))
+	// result := make([]byte, 6)
+
+	return string(random)
 }
 
 func PopoutString(popout string) {

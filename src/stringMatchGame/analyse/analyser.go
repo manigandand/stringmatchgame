@@ -94,7 +94,7 @@ func GuessSmarter() string {
 				fmt.Println("Computer guessed the correct letter in the correct position are: ", correctPosition)
 				turn = "Player"
 				// popot all the wrong guessed charcters by computer
-				// fmt.Println("popout: ", popout)
+				fmt.Println("popout: ", popout)
 				random.PopoutString(popout)
 			}
 		}
