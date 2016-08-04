@@ -14,6 +14,7 @@ func GuessSmarter() string {
 	randomStr := random.RandomString(randomStringLength)
 
 	winer := ""
+	popout := ""
 	turn := "Player"
 	totalCorrect, correctPosition := 0, 0
 	fmt.Println("characters need to guess, don't reveal this in future:", randomStr)
@@ -31,6 +32,9 @@ func GuessSmarter() string {
 			break
 		}
 	}
+
+	// update target point in file
+	random.UpdateTargetPoint(targetPoint)
 
 	/*
 	   Switch chance to player and computer untill anyone won the match
@@ -55,10 +59,9 @@ func GuessSmarter() string {
 			}
 
 			// fmt.Println(text)
-			totalCorrect, correctPosition = engine.StringMatch(randomStr, text)
+			totalCorrect, correctPosition, _ = engine.StringMatch(randomStr, text, turn)
 
 			if totalCorrect >= targetPoint || correctPosition >= targetPoint {
-				fmt.Println("Congrats..! You won the game :)")
 				fmt.Println("You have guessed the correct letter but not in the correct position are: ", totalCorrect)
 				fmt.Println("You have guessed the correct letter in the correct position are: ", correctPosition)
 				winer = "You"
@@ -76,12 +79,11 @@ func GuessSmarter() string {
 			fmt.Println("-------------------------------------------------") //
 			fmt.Println("Now computer turn..!")
 			computerGuess := random.ComputerRandomString(6)
-
 			fmt.Println("Computer Guess: ", computerGuess)
-			totalCorrect, correctPosition = engine.StringMatch(randomStr, computerGuess)
+			// fmt.Println("Computer Guess length: ", len(computerGuess))
+
+			totalCorrect, correctPosition, popout = engine.StringMatch(randomStr, computerGuess, turn)
 			if totalCorrect >= targetPoint || correctPosition >= targetPoint {
-				fmt.Println("Oops sorry, Computer won the game :(")
-				fmt.Println("Good luck for next time. Hope you enjoyed this.")
 				fmt.Println("Computer guessed the correct letter but not in the correct position are: ", totalCorrect)
 				fmt.Println("Computer guessed the correct letter in the correct position are: ", correctPosition)
 				winer = "Computer"
@@ -91,6 +93,9 @@ func GuessSmarter() string {
 				fmt.Println("Computer guessed the correct letter but not in the correct position are: ", totalCorrect)
 				fmt.Println("Computer guessed the correct letter in the correct position are: ", correctPosition)
 				turn = "Player"
+				// popot all the wrong guessed charcters by computer
+				// fmt.Println("popout: ", popout)
+				random.PopoutString(popout)
 			}
 		}
 	}

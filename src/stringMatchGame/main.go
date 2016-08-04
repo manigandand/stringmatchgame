@@ -3,9 +3,12 @@ package main
 import (
 	"fmt"
 	"stringMatchGame/analyse"
+	"stringMatchGame/random"
 )
 
 func main() {
+	// refill the input string to generate random string for computer move
+	random.RefillInputFile()
 
 	Insruction := `==============Welcome to StringMatchGame==============
 	  It's easy to play, you have chance to conquer our StringMatchGame Robot2.o.
@@ -18,6 +21,11 @@ func main() {
 
 	winer := analyse.GuessSmarter()
 
-	fmt.Println(winer, " Won")
+	if winer == "You" {
+		fmt.Println("Congrats..! You won the game :)")
+	} else if winer == "Computer" {
+		fmt.Println("Oops sorry, Computer won the game :(")
+		fmt.Println("Good luck for next time. Hope you enjoyed this.")
+	}
 
 }
