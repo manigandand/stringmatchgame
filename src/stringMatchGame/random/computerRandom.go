@@ -1,7 +1,6 @@
 package random
 
 import (
-	"fmt"
 	"math/rand"
 	"strings"
 	"time"
@@ -25,23 +24,16 @@ func ComputerRandomString(strlen int) string {
 
 	for _, el := range popin {
 		if el != 0 {
-			fmt.Println("PopIn: ", string(el))
+			// fmt.Println("PopIn: ", string(el))
 			lengthOfCorrectGuess++
 		}
 	}
-	fmt.Println("lengthOfCorrectGuess: ", lengthOfCorrectGuess)
-	if lengthOfCorrectGuess == 6 {
+	targetPoint := GetTargetPoint()
+	if lengthOfCorrectGuess == targetPoint {
 		return string(popin)
 	} else {
-
+		return string(random)
 	}
-
-	fmt.Println("PopIn: ", string(popin))
-
-	fmt.Println("random: ", string(random))
-	// result := make([]byte, 6)
-
-	return string(random)
 }
 
 func PopoutString(popout string) {
@@ -57,7 +49,6 @@ func stripchars(str, chr string) string {
 	return strings.Map(func(r rune) rune {
 		if strings.IndexRune(chr, r) < 0 {
 			return r
-			fmt.Println(r)
 		}
 		return -1
 	}, str)

@@ -33,6 +33,9 @@ func GuessSmarter() string {
 		}
 	}
 
+	// update target point in file
+	random.UpdateTargetPoint(targetPoint)
+
 	/*
 	   Switch chance to player and computer untill anyone won the match
 	*/
@@ -59,7 +62,6 @@ func GuessSmarter() string {
 			totalCorrect, correctPosition, _ = engine.StringMatch(randomStr, text, turn)
 
 			if totalCorrect >= targetPoint || correctPosition >= targetPoint {
-				fmt.Println("Congrats..! You won the game :)")
 				fmt.Println("You have guessed the correct letter but not in the correct position are: ", totalCorrect)
 				fmt.Println("You have guessed the correct letter in the correct position are: ", correctPosition)
 				winer = "You"
@@ -82,8 +84,6 @@ func GuessSmarter() string {
 
 			totalCorrect, correctPosition, popout = engine.StringMatch(randomStr, computerGuess, turn)
 			if totalCorrect >= targetPoint || correctPosition >= targetPoint {
-				fmt.Println("Oops sorry, Computer won the game :(")
-				fmt.Println("Good luck for next time. Hope you enjoyed this.")
 				fmt.Println("Computer guessed the correct letter but not in the correct position are: ", totalCorrect)
 				fmt.Println("Computer guessed the correct letter in the correct position are: ", correctPosition)
 				winer = "Computer"
@@ -94,7 +94,7 @@ func GuessSmarter() string {
 				fmt.Println("Computer guessed the correct letter in the correct position are: ", correctPosition)
 				turn = "Player"
 				// popot all the wrong guessed charcters by computer
-				fmt.Println("popout: ", popout)
+				// fmt.Println("popout: ", popout)
 				random.PopoutString(popout)
 			}
 		}

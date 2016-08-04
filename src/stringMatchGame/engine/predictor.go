@@ -1,9 +1,6 @@
 package engine
 
-import (
-	"fmt"
-	"stringMatchGame/random"
-)
+import "stringMatchGame/random"
 
 func StringMatch(randomStr string, text string, turn string) (totalCorrect int, correctPosition int, popout string) {
 	byterandomStr := []byte(randomStr)
@@ -69,8 +66,8 @@ func StringMatch(randomStr string, text string, turn string) (totalCorrect int, 
 		popout = string(userInput)
 
 		// make byte slice of all correct characteres to save
-		fmt.Println("popin: ", popin)
-		fmt.Println("popin: ", string(popin))
+		// fmt.Println("popin: ", popin)
+		// fmt.Println("popin: ", string(popin))
 		random.UpdatePopinString(string(popin))
 	}
 

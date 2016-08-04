@@ -147,7 +147,7 @@ func in_array(val string, array []string) (exists bool, index int) {
 }
 
 func main() {
-	names := []string{"Mary", "Anna", "Beth", "Johnny", "Beth"}
+	names := []string{"a", "b", "c", "d", "e"}
 
 	fmt.Println(in_array("Jack", names))
 }

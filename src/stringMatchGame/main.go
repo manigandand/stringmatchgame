@@ -21,6 +21,11 @@ func main() {
 
 	winer := analyse.GuessSmarter()
 
-	fmt.Println(winer, " Won")
+	if winer == "You" {
+		fmt.Println("Congrats..! You won the game :)")
+	} else if winer == "Computer" {
+		fmt.Println("Oops sorry, Computer won the game :(")
+		fmt.Println("Good luck for next time. Hope you enjoyed this.")
+	}
 
 }
