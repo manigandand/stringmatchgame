@@ -1,6 +1,9 @@
 package engine
 
-import "stringMatchGame/random"
+import (
+	"fmt"
+	"stringMatchGame/random"
+)
 
 func StringMatch(randomStr string, text string, turn string) (totalCorrect int, correctPosition int, popout string) {
 	byterandomStr := []byte(randomStr)
@@ -22,28 +25,25 @@ func StringMatch(randomStr string, text string, turn string) (totalCorrect int, 
 			correctPosition++
 			popin[i] = userInput[i]
 		}
-		/*
-		   Calculate the strings guesed correctly but not in the same position
-		*/
-		for j := 0; j < len(userInput); j++ {
-			// check wheather the current index already searched or not
-			if checkIndex(lastCheckedChar, byterandomStr[i]) {
-				if byterandomStr[i] == userInput[j] {
-					// fmt.Println("r: ", i, " ", string(byterandomStr[i]), " u: ", j, " ", string(userInput[j]))
-					if j >= i {
-						if byterandomStr[j] != userInput[j] {
-							totalCorrect++
-							popin[i] = userInput[j]
-						}
-					} else {
+	}
+	/*
+	   Calculate the strings guesed correctly but not in the same position && ommit duplicate occurance of user/comp guess
+	*/
+	for i := 0; i < len(byterandomStr); i++ {
+		for j := 0; j < len(byterandomStr); j++ {
+			if checkIndex(lastCheckedChar, userInput[i]) {
+				if userInput[i] == byterandomStr[j] {
+					if userInput[j] != byterandomStr[j] {
+						// fmt.Println("r: ", i, " ", string(userInput[i]), " u: ", j, " ", string(byterandomStr[j]))
+						// update total correct
 						totalCorrect++
-						popin[i] = userInput[j]
+						popin[j] = userInput[i]
 					}
 				}
 			}
 		}
-		lastCheckedChar[i] = string(byterandomStr[i])
-
+		// store the last searched character
+		lastCheckedChar[i] = string(userInput[i])
 	}
 
 	// find wrong guess to popout
@@ -67,12 +67,13 @@ func StringMatch(randomStr string, text string, turn string) (totalCorrect int, 
 
 		// make byte slice of all correct characteres to save
 		// fmt.Println("popin: ", popin)
-		// fmt.Println("popin: ", string(popin))
+		fmt.Println("popin: ", string(popin))
 		random.UpdatePopinString(string(popin))
 	}
 
 	// make byte of all popout characteres
 	popoutRet := []byte(popout)
+	fmt.Println("popout: ", string(popoutRet))
 
 	return totalCorrect, correctPosition, string(popoutRet)
 }
