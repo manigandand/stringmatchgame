@@ -4,12 +4,23 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"strconv"
 )
 
-const path = "data/computermove.txt"
-const path1 = "data/computerCorrectMove.txt"
-const path2 = "data/targetpoint.txt"
+var path = "random/data/computermove.txt"
+var path1 = "random/data/computer_correct_moves.txt"
+var path2 = "random/data/targetpoint.txt"
+
+func init() {
+	var err error
+	path, err = filepath.Abs(path)
+	CheckError(err)
+	path1, err = filepath.Abs(path1)
+	CheckError(err)
+	path2, err = filepath.Abs(path2)
+	CheckError(err)
+}
 
 // const flag = true
 
@@ -51,6 +62,7 @@ func UpdatePopoutString(update string) {
 	CheckError(err)
 }
 
+// RefillInputFile ...
 func RefillInputFile() {
 	// regenerate string to random generate
 	str := "abcdefghijklmnopqrstuvwxyz"
