@@ -7,12 +7,13 @@ import (
 	"strconv"
 )
 
-const path = "src/stringMatchGame/random/data/computermove.txt"
-const path1 = "src/stringMatchGame/random/data/computerCorrectMove.txt"
-const path2 = "src/stringMatchGame/random/data/targetpoint.txt"
+const path = "data/computermove.txt"
+const path1 = "data/computerCorrectMove.txt"
+const path2 = "data/targetpoint.txt"
 
 // const flag = true
 
+// CurentAvailability ...
 func CurentAvailability() string {
 	file, err := os.Open(path)
 	CheckError(err)

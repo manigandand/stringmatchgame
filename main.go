@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"stringMatchGame/analyse"
-	"stringMatchGame/random"
+	"stringmatchgame/analyse"
+	"stringmatchgame/random"
 )
 
 func main() {

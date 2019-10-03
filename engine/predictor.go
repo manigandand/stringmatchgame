@@ -2,18 +2,17 @@ package engine
 
 import (
 	"fmt"
-	"stringMatchGame/random"
+	"stringmatchgame/random"
 )
 
+// StringMatch ...
 func StringMatch(randomStr string, text string, turn string) (totalCorrect int, correctPosition int, popout string) {
 	byterandomStr := []byte(randomStr)
 	userInput := []byte(text)
 
 	totalCorrect = 0
 	correctPosition = 0
-	/*
-	   Check for the given string matches exactly in the same position
-	*/
+	// Check for the given string matches exactly in the same position
 	lastCheckedChar := make([]string, 6)
 	// "Previous Guess String: "
 	popin := random.CurrentRightGuess()
@@ -26,9 +25,7 @@ func StringMatch(randomStr string, text string, turn string) (totalCorrect int, 
 			popin[i] = userInput[i]
 		}
 	}
-	/*
-	   Calculate the strings guesed correctly but not in the same position && ommit duplicate occurance of user/comp guess
-	*/
+	// Calculate the strings guesed correctly but not in the same position && ommit duplicate occurance of user/comp guess
 	for i := 0; i < len(byterandomStr); i++ {
 		for j := 0; j < len(byterandomStr); j++ {
 			if checkIndex(lastCheckedChar, userInput[i]) {

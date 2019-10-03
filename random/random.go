@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// RandomString ...
 func RandomString(strlen int) string {
 	rand.Seed(time.Now().UTC().UnixNano())
 	const chars = "abcdefghijklmnopqrstuvwxyz"

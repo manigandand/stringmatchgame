@@ -4,10 +4,11 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"stringMatchGame/engine"
-	"stringMatchGame/random"
+	"stringmatchgame/engine"
+	"stringmatchgame/random"
 )
 
+// GuessSmarter ...
 func GuessSmarter() string {
 	// computer generated random string
 	randomStringLength := 6

@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+// ComputerRandomString ...
 func ComputerRandomString(strlen int) string {
 	// get current available charaters to genearte random string
 	chars := CurentAvailability()
@@ -31,11 +32,11 @@ func ComputerRandomString(strlen int) string {
 	targetPoint := GetTargetPoint()
 	if lengthOfCorrectGuess == targetPoint {
 		return string(popin)
-	} else {
-		return string(random)
 	}
+	return string(random)
 }
 
+// PopoutString ...
 func PopoutString(popout string) {
 	chars := CurentAvailability()
 	// fmt.Println("Computer Guess Constant Before Popout: ", chars)
